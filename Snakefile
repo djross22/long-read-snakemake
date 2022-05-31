@@ -9,7 +9,7 @@ min_version("5.5.0")
 targets = pd.read_csv("targets.csv").set_index("target", drop = False)
 
 ## Wildcard constraints
-SEQGROUP=["forward", "reverse", "combined"]
+SEQGROUP=["forward_seq", "reverse_seq", "combined"]
 SPLITS = [f'{n:03}' for n in range(1,16)]
 
 wildcard_constraints:
@@ -84,10 +84,10 @@ rule reverse_seqs:
 ## Generate combined forward and reverse seq set
 rule combine_seqs:
     input: 
-        forward=expand(outdir + "/forward_seqs_{split}.fastq", split = SPLITS),
-        reverse=expand(outdir + "/reverse_seqs_{split}.fastq", split = SPLITS)
+        forward_seq=expand(outdir + "/forward_seqs_{split}.fastq", split = SPLITS),
+        reverse_seq=expand(outdir + "/reverse_seqs_{split}.fastq", split = SPLITS)
     output: outdir + "/combined_seqs.fastq"
-    shell: "cat {input.forward} {input.reverse} > {output}"
+    shell: "cat {input.forward_seq} {input.reverse_seq} > {output}"
 
 # rule qc_seqs:
 #     input: outdir + "/{seq_group}_seqs_{split}.fastq"
