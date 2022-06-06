@@ -1,0 +1,7 @@
+
+
+outdir:
+    data_4/processed
+    
+infq:
+    data_4/raw/Lib_UKMC_1A.fastq.gz
