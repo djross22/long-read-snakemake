@@ -1,7 +1,7 @@
 
 
 outdir:
-    data_6/processed
+    data_10/processed
     
 infq:
-    data_6/raw/Lib_UKMC_1A.fastq.gz
+    data_10/raw/2023-02-20_LacI_Nanopore.fastq.gz
